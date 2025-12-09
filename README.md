@@ -50,7 +50,7 @@ Content is automatically saved to `localStorage` under the key `mcp_deck_content
 
 ```javascript
 // Storage key
-localStorage.setItem('mcp_deck_content', JSON.stringify(currentContent));
+localStorage.setItem("mcp_deck_content", JSON.stringify(currentContent));
 ```
 
 ### Export & Copy
@@ -117,10 +117,10 @@ Mermaid is initialized with:
 ```javascript
 mermaid.initialize({
   startOnLoad: false,
-  theme: 'dark',
-  securityLevel: 'loose',
-  fontFamily: 'Inter',
-  flowchart: { useMaxWidth: true, htmlLabels: true }
+  theme: "dark",
+  securityLevel: "loose",
+  fontFamily: "Inter",
+  flowchart: { useMaxWidth: true, htmlLabels: true },
 });
 ```
 
@@ -148,4 +148,3 @@ mermaid.initialize({
 ## License
 
 MIT
-

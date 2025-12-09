@@ -325,3 +325,184 @@ li::before {
   border: 1px solid #334155;
   resize: none;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1rem;
+    min-height: 100vh;
+  }
+
+  .slide-content {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    padding: 0 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  ul {
+    font-size: 0.95rem;
+  }
+
+  .diagram-container {
+    padding: 1rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+  }
+
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mockup-window {
+    height: auto;
+    min-height: 150px;
+    padding: 10px;
+  }
+
+  .nav-dots {
+    right: 10px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  #editModeToggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    min-height: 44px; /* Touch-friendly */
+    min-width: 44px;
+  }
+
+  .save-tools {
+    top: 10px;
+    left: 10px;
+  }
+
+  .save-tools button {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    min-height: 44px; /* Touch-friendly */
+  }
+
+  #mermaidEditor {
+    width: 95%;
+    max-width: none;
+    padding: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  #mermaidEditor button {
+    min-height: 44px; /* Touch-friendly */
+    width: 100%;
+  }
+
+  #mermaidCode {
+    height: 200px;
+    font-size: 0.75rem;
+  }
+
+  .system-response {
+    font-size: 0.65rem;
+    padding: 0.4rem;
+    word-break: break-word;
+  }
+
+  .mockup-btn {
+    min-height: 32px;
+    font-size: 9px;
+  }
+
+  /* Prevent text overflow */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    padding: 0 0.25rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .nav-dots {
+    display: none; /* Hide navigation dots on very small screens */
+  }
+
+  #editModeToggle {
+    font-size: 0.7rem;
+    padding: 8px 10px;
+    min-height: 44px;
+  }
+
+  .save-tools {
+    top: 60px; /* Move below edit toggle */
+  }
+
+  .save-tools button {
+    font-size: 0.7rem;
+    padding: 8px 10px;
+    min-height: 44px;
+  }
+
+  .mockup-window {
+    min-height: 120px;
+    padding: 8px;
+  }
+
+  .card {
+    padding: 0.75rem;
+  }
+
+  .diagram-container {
+    padding: 0.75rem;
+  }
+}
+
+.slide-number {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #475569; /* Slate 600 */
+  opacity: 0.6;
+  z-index: 5;
+  font-family: "Inter", sans-serif;
+}
