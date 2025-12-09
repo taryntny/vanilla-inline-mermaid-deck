@@ -75,6 +75,37 @@ This project is designed for static hosting on GitHub Pages:
 
 No build step required—serve `index.html` directly.
 
+#### Cache-Busting for Updates
+
+To ensure users see the latest version after deployments, cache-busting query parameters are added to local assets (`styles.css`, `content.js`, `script.js`).
+
+**To update the version after making changes:**
+
+1. **Automatic version bump** (recommended):
+
+   ```bash
+   ./bump-version.sh
+   ```
+
+   This auto-increments the patch version (e.g., `1.0.0` → `1.0.1`).
+
+2. **Manual version bump**:
+
+   ```bash
+   ./bump-version.sh 1.1.0
+   ```
+
+   Or manually edit `index.html` and update the `?v=` parameter in all three asset references.
+
+3. **Commit and push**:
+   ```bash
+   git add index.html
+   git commit -m "Bump version for cache-busting"
+   git push
+   ```
+
+**Note:** The CDN resources (Tailwind, Mermaid, Google Fonts) are versioned separately and don't need cache-busting. The issue is typically with local assets being cached by browsers and GitHub Pages CDN.
+
 ### CDN Dependencies
 
 - **Tailwind CSS**: `https://cdn.tailwindcss.com`
