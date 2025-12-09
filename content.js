@@ -55,7 +55,7 @@ const MCPDIRECT_STUDIO_UX_STRATEGY_20251209 = {
                     Start(["Entry"]) --> Role{"Role?"}
                     Role --> ClientSetup["Client Setup"]
                     ClientSetup --> ServerConnect["Connect Server"]
-                    ServerConnect --> Toolpack["Toolpack & Rules"]
+                    ServerConnect --> Toolpack["Configure Tools & Copy Rules"]
                 end
 
                 subgraph Operations ["Phase 2: Ops & Dev"]
@@ -102,9 +102,9 @@ const MCPDIRECT_STUDIO_UX_STRATEGY_20251209 = {
       description: 'Flow D: Add "Body".',
       tab1: "Paste URL",
       tab2: "Presets",
-      urlPlaceholder: "https://api.weather.com/sse",
+      urlPlaceholder: "https://api.mcpdirect.com/[key]/sse",
       detected: "Detected: 4 Tools",
-      button: "Connect & Scan",
+      button: "Connect & Sync",
     },
   },
   slide5: {
