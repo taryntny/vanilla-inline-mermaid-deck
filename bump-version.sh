@@ -6,7 +6,8 @@
 
 if [ -z "$1" ]; then
   # Auto-increment patch version
-  current_version=$(grep -oP 'v=\K[0-9]+\.[0-9]+\.[0-9]+' index.html | head -1)
+  # Use sed to extract version (works on both macOS and Linux)
+  current_version=$(grep -oE 'v=[0-9]+\.[0-9]+\.[0-9]+' index.html | head -1 | sed 's/v=//')
   if [ -z "$current_version" ]; then
     new_version="1.0.1"
   else
@@ -21,10 +22,14 @@ fi
 echo "Bumping version to: $new_version"
 
 # Replace version in all three places (styles.css, content.js, script.js)
-sed -i.bak "s/v=[0-9]\+\.[0-9]\+\.[0-9]\+/v=$new_version/g" index.html
-
-# Clean up backup file (macOS creates .bak files)
-rm -f index.html.bak
+# Use a more portable sed pattern that works on both macOS (BSD sed) and Linux (GNU sed)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS (BSD sed) - requires backup extension and different regex
+  sed -i '' "s/v=[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/v=$new_version/g" index.html
+else
+  # Linux (GNU sed)
+  sed -i "s/v=[0-9]\+\.[0-9]\+\.[0-9]\+/v=$new_version/g" index.html
+fi
 
 echo "Version updated to $new_version in index.html"
 echo "Don't forget to commit and push!"
