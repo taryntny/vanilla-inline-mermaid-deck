@@ -284,6 +284,20 @@ window.onload = function () {
   renderContent();
   setupEventListeners();
 
+  // Display version from asset URLs
+  const versionDisplay = document.getElementById("version-display");
+  if (versionDisplay) {
+    // Extract version from the first script tag with a version query parameter
+    const scriptTag = document.querySelector('script[src*="content.js"]');
+    if (scriptTag) {
+      const src = scriptTag.getAttribute("src");
+      const match = src.match(/[?&]v=([^&]+)/);
+      if (match) {
+        versionDisplay.textContent = match[1];
+      }
+    }
+  }
+
   // Nav Dots
   const sections = document.querySelectorAll("section");
   const dotsContainer = document.getElementById("navDots");
