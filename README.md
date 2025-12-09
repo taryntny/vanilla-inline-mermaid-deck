@@ -77,25 +77,27 @@ No build step required—serve `index.html` directly.
 
 #### Cache-Busting for Updates
 
-To ensure users see the latest version after deployments, cache-busting query parameters are added to local assets (`styles.css`, `content.js`, `script.js`).
+To ensure users see the latest version after deployments, cache-busting is implemented in multiple ways:
+
+1. **Query parameters** on local assets (`styles.css`, `content.js`, `script.js`)
+2. **Version comment and meta tag** in the HTML file itself (forces HTML refresh)
+3. **Cache-control meta tags** to prevent aggressive browser caching
 
 **To update the version after making changes:**
 
 1. **Automatic version bump** (recommended):
-
    ```bash
    ./bump-version.sh
    ```
-
-   This auto-increments the patch version (e.g., `1.0.0` → `1.0.1`).
+   This auto-increments the patch version (e.g., `1.0.0` → `1.0.1`) and updates:
+   - All asset URL query parameters
+   - HTML version comment
+   - HTML version meta tag
 
 2. **Manual version bump**:
-
    ```bash
    ./bump-version.sh 1.1.0
    ```
-
-   Or manually edit `index.html` and update the `?v=` parameter in all three asset references.
 
 3. **Commit and push**:
    ```bash
@@ -104,7 +106,17 @@ To ensure users see the latest version after deployments, cache-busting query pa
    git push
    ```
 
-**Note:** The CDN resources (Tailwind, Mermaid, Google Fonts) are versioned separately and don't need cache-busting. The issue is typically with local assets being cached by browsers and GitHub Pages CDN.
+**If updates still don't appear after deployment:**
+
+- **Wait 1-2 minutes** for GitHub Pages to rebuild (check Actions tab)
+- **Hard refresh** your browser:
+  - Chrome/Edge: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac)
+  - Firefox: `Ctrl+F5` (Windows) or `Cmd+Shift+R` (Mac)
+  - Safari: `Cmd+Option+R` (Mac)
+- **Clear browser cache** for your GitHub Pages domain
+- **Check the version** displayed on slide 1 to confirm you're seeing the latest
+
+**Note:** The CDN resources (Tailwind, Mermaid, Google Fonts) are versioned separately and don't need cache-busting. The HTML file itself is now also versioned to force refresh.
 
 ### CDN Dependencies
 
